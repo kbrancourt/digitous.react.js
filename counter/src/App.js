@@ -1,39 +1,76 @@
 import React from "react";
-import './App.css';
-import Counter from'./Counter';
-
-export class App extends React.Component {
-  constructor(props){
+import "./App.css";
+import Counter from "./components/Counter/Counter";
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state={
-      count :0
-    }
-    this.incrementCount = this.incrementCount.bind(this);
-    this.decrementCount = this.decrementCount.bind(this);
+    this.state = {
+      count1: 0,
+      count2: 0,
+    };
   }
-      incrementCount = () =>{
-        let result = this.state.count;
-        result ++;
-        this.setState({count: this.state.count + 1})
-      }
-      decrementCount = () =>{
-        let result = this.state.count;
-        if(result === 0){
-          return;
-        }
-        result --;
-        this.setState({count: this.state.count - 1})
-      }
-
+  decrementCount1 = () => {
+    let result = this.state.count1;
+    if (result === 0) {
+      return;
+    } else {
+      result--;
+      this.setState({ count1: result });
+    }
+  };
+  decrementCount2 = () => {
+    let result = this.state.count2;
+    if (result === 0) {
+      return;
+    } else if (result === this.state.count1) {
+      this.decrementCount1();
+      result--;
+      this.setState({ count2: result });
+    } else {
+      result--;
+      this.setState({ count2: result });
+    }
+  };
+  incrementCount1 = () => {
+    let result = this.state.count1;
+    if (result === 100) {
+      return;
+    } else if (result === this.state.count2) {
+      this.incrementCount2();
+      result++;
+      this.setState({ count1: result });
+    } else {
+      result++;
+      this.setState({ count1: result });
+    }
+  };
+  incrementCount2 = () => {
+    let result = this.state.count2;
+    if (result === 100) {
+      return;
+    } else {
+      result++;
+      this.setState({ count2: result });
+    }
+  };
   render() {
     return (
-      <div>
-        <h1>Counter</h1>
-        <Counter count={this.state.count} removeFunction={this.decrementCount} addFunction={this.incrementCount}/>
-            
+      <div className="App">
+        <header className="App-header">
+          <h1>Counter</h1>
+          <Counter
+            resultatDuCounter={this.state.count1}
+            retire={this.decrementCount1}
+            ajoute={this.incrementCount1}
+          />
+          <Counter
+            resultatDuCounter={this.state.count2}
+            retire={this.decrementCount2}
+            ajoute={this.incrementCount2}
+          />
+        </header>
       </div>
-    ); 
+    );
   }
 }
-
 export default App;
