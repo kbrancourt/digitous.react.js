@@ -12,7 +12,7 @@ export class App extends React.Component {
     super();
       this.state={
         activeTab:"add",
-        item: []
+        items: []
       }
       this.selectedAdd=this.selectedAdd.bind(this);
       this.selectedList=this.selectedList.bind(this);
@@ -35,6 +35,16 @@ export class App extends React.Component {
       this.setState({
         activeTab: "pay"
       })
+  }
+
+  addItem(name,price){
+      this.setState({
+        items:{
+          name : "xx",
+          price: "xx",
+        }
+      })
+      console.log(items);
   }
 
   render() {
