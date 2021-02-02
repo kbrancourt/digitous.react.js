@@ -1,98 +1,100 @@
 import React from "react";
 
 class Form extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
-            value: ""
+            emailValid: false,
+            passwordValid: false,
+            password: '',
+            email:'',
+            rememberMe:false
+
         }
-        // this.validEmail = this.validEmail.bind(this);
-        // this.validPassword = this.validPassword.bind(this);
-        // this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
+    onChangeEmail(event){
+      const newEmail= event.target.value;
+      const reg = /^\S+@\S+\.\S+$/g;
+      const isMail= reg.test(newEmail)
+
+      this.setState({
+        email: event.target.value,
+        emailValid: isMail
+      })
+    }
+
     
-    //email valid
-    //si email contient des lettres+chiffres+caractères spéciaux === valide
-    //sinon email non valide
-    //validEmail(event){
-    //    this.setState({
-    //
-    //    })
-    //}
-
-
-    //password valid
-    //validPassword(event){
-    //    this.setState({
-
-    //    })
-    //}
-
-
-    // onSubmit(event){
-    //     console.log("event", event);
-    //     this.setState({
-
-    //     })
-    // }
-
-    // validate(){
-
-    //     let input = this.state.input;
-    //     let errors = {};
-    //     let isValid = true;
-  
-
-  
-    //     if (!input["email"]) {
-    //       isValid = false;
-    //       errors["email"] = "Please enter your email Address.";
-    //     }
-  
-    //     if (typeof input["email"] !== "undefined") {
-    //       var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-  
-    //       if (!pattern.test(input["email"])) {
-    //         isValid = false;
-    //         errors["email"] = "Please enter valid email address.";
-    //       }
-    //     }
+    onChangePassword(event){
+      let newPasswordValid = false;
+      if(event.target.value.length>=6){
+        newPasswordValid = true
+      }else{
+        newPasswordValid = false
+      }
+      this.setState({
+        password: event.target.value,
+        passwordValid : newPasswordValid
+      })
+    }
     
-    //     if (!input["password"]) {
-    //       isValid = false;
-    //       errors["password"] = "Invalid password.";
-    //     }
-  
-    //     this.setState({
-    //       errors: errors
-    //     });
-  
-    //     return isValid;
-    // }
-  
-       
+    handleSubmit(event) {
+        event.preventDefault();
+          this.setState({
+            submitClick : true
+          })
+        }
 
-
-
-
-
-
-
-
+     
+    
     render(){
+      // si le clickSubmit est validé
+      if(this.state.submitClick === true){
+        return (<div>SUBMIT SUCCESS</div>)
+      }
+      // si le clickSubmit est non validé
         return(
-        //je créé un forulaire simple
+        //je créé un formulaire simple
         //un label pour le mail et le password
         //un input pour rentrer des informations
         //une case à cocher pour enregistrer les infos du formulaire
         //un bouton submit pour envoyer les infos
-        <form className='form-group'>
-            <label>Email address</label>
-            <input className="form-control" value="email" type="email" placeholder="Enter email..."/>
-            <label>Password</label>
-            <input className="form-control" value="password" type="password" placeholder="Enter password..."/>
-            <input type="submit" value="submit" className="btn btn-primary"/>
+        <form className='form-group needs-validation container-fluid'>
+          <div className="row">
+            <div className="col-8"> 
+            <label htmlFor="email">Email address</label>
+            <input name="email" className={this.state.emailValid ? 'form-control is-valid' : 'form-control is-invalid'}  type="email" required onChange={this.onChangeEmail} placeholder="Enter email..." />
+            </div>
+          </div>
+            
+          <div className="row">
+            <div className="col-8">
+            <label htmlFor="password">Password</label>
+            <input
+            type="password"
+            name="password"
+            placeholder="enter password ..."
+            className={this.state.passwordValid ? 'form-control is-valid' : 'form-control is-invalid'}
+            required
+            onChange={this.onChangePassword}/>
+
+            </div>
+          </div>
+           
+          <div className="row">
+            <div className="col-8">
+              <input type="Checkbox"  className="remember"/>
+              <label> Remember me</label>
+            </div>
+          </div> 
+
+          <div className="col-8">
+            <input type="submit" disabled={!this.state.emailValid || !this.state.passwordValid} value="Connexion" className="btn btn-primary" onClick={this.handleSubmit}/>
+          </div> 
+            
         </form>
         )
     }
