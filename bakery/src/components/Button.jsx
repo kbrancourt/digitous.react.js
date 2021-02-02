@@ -9,7 +9,7 @@ import React from "react";
   render() {
     return (
       <div>
-          <button className={this.isSelected} onClick={this.props.onClick}>{this.props.children}className="form-control btn btn-primary" </button>
+          <button className={this.props.isSelected} onClick={this.props.onClick}>{this.props.children}</button>
       </div>
     );
   }
