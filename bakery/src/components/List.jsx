@@ -5,12 +5,17 @@ class List extends React.Component {
     constructor(){
         super();
           this.state={
-            
+            items: "xx",
+            price: "xx"
           }
       }
     
 
-
+      items(){
+        this.setState({
+          
+        })
+      }
 
   render() {
     return (
@@ -18,6 +23,9 @@ class List extends React.Component {
         <div className="row">
           {/* //créer onglet List : obtenir récap des prosuits saisis*/}
           List
+          <ul>
+              {this.state.items}
+          </ul>
         </div>
      
     );
