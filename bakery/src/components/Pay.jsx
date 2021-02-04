@@ -1,27 +1,13 @@
-import React from "react";
+import React, { Component } from 'react'
 
-
-class Pay extends React.Component {
-  constructor(){
-    super();
-      this.state={
-        
-      }
-  }
-
-
-
-  render() {
-    return (
-    
-        <div className="row">
-         
-          {/* //créer onglet Pay: obtenir détail des prix et total à payer */}
-          Pay
-        </div>
-     
-    );
-  }
+class Pay extends Component {
+    render() {
+        return (
+            <div>
+                Pay
+            </div>
+        )
+    }
 }
 
-export default Pay;
+export default Pay

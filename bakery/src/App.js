@@ -39,19 +39,23 @@ export class App extends React.Component {
       })
   }
 
-  addItem(productName,price){
-    console.log("result", productName)
-       this.setState({
-         items: [...this.state.items, {name: productName, price: price}]
-       })
+  addItem(name, price) {
+    const obj = {
+      name: name,
+      price: price
+    }
+    const newList = this.state.items
+    newList.push(obj)
+    this.setState({
+      items: newList
+    })
   }
-
     renderContent(){
       if(this.state.activeTab === "add"){
         return <Add addItem={this.addItem} />
       }
       if(this.state.activeTab === "list"){
-        return <List></List>
+        return <List listItems={this.state.items}></List>
       }
       if(this.state.activeTab === "pay"){
         return <Pay></Pay>
@@ -61,9 +65,9 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="text-primary">Bakery</h1>
-        <div className="row">
+      <div border="secondary" style={{ width: '18rem' }}>
+        <h1 className="text-dark">Bakery</h1>
+        <div className="row" >
           <div className="col-3 "> 
             <Button type="button" isSelected={this.state.activeTab === "add"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={this.selectedAdd}>Add</Button>
           </div>

@@ -1,35 +1,14 @@
-import React from "react";
+import React, { Component } from 'react'
 
-
-class List extends React.Component {
-    constructor(){
-        super();
-          this.state={
-            items: "xx",
-            price: "xx"
-          }
-      }
-    
-
-      items(){
-        this.setState({
-          
-        })
-      }
-
-  render() {
-    return (
-    
-        <div className="row">
-          {/* //créer onglet List : obtenir récap des prosuits saisis*/}
-          List
-          <ul>
-              {this.state.items}
-          </ul>
-        </div>
-     
-    );
-  }
+class List extends Component {
+    render() {
+        return (
+            <ul>
+                {this.props.listItems.map(curr => {
+                    return ( <li>{curr.name} - {curr.price} </li>)
+                })}
+            </ul>
+        )
+    }
 }
-
-export default List;
+export default List

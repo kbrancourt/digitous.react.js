@@ -8,7 +8,6 @@ class Add extends React.Component {
             productName: "",
             price: 1
           }
-          this.update = this.update.bind(this);
           this.updateProductName = this.updateProductName.bind(this);
           this.updatePrice = this.updatePrice.bind(this);
       }
@@ -30,23 +29,31 @@ class Add extends React.Component {
         });
       }
       
-      update(){
-        this.props.addItem(
-          this.state.productName,
-          this.state.price,
-        )
-      }
+      click = () => {
+        // Dépendant de comment a été déclarer la fonction passé en props
+        // On va lui remonter un ou plusieurs arguments
+
+        // this.props.addItem({ name: this.state.productName, price: this.state.price})
+        this.props.addItem(this.state.productName, this.state.price)
+    }
       
 
   render() {
     return (
       
         <div className="row">
-          {/* //créer onglet Add: ajouter nvx produits à la commande*/}
-          Add
-          <input type="text" onChange={this.updateProductName}/>
-          <input type="range" min={1} max={10} onChange={this.updatePrice}/>
-          <button onClick={this.update}>Add</button>
+          <div className="col-12">
+             <input type="text" onChange={this.updateProductName}/>
+             <button onClick={this.click}>Add</button>
+          </div>
+
+          <div clasName="col-12">
+             <input type="range" min="1" max="10" value={this.state.price} onChange={this.updatePrice}/>
+             <span>{this.state.price}</span>
+          </div>
+          
+          
+         
         </div>
       
     );
