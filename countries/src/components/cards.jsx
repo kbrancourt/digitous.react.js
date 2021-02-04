@@ -4,7 +4,7 @@ class Cards extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="card">
               {this.props.name}
               {this.props.capital}
               {this.props.flag}

@@ -16,6 +16,10 @@ export class App extends React.Component {
     }
 
     this.componentDidMount =this.componentDidMount.bind(this);
+    this.getCountry =this.getCountry.bind(this);
+    this.selectedFrance=this.selectedFrance.bind(this);
+      this.selectedBrazil=this.selectedBrazil.bind(this);
+      this.selectedCroatia=this.selectedCroatia.bind(this);
   }
 
    componentDidMount(){
@@ -50,18 +54,41 @@ export class App extends React.Component {
    .catch(error => console.error(error))
   }
 
+  selectedFrance(){
+    this.setState({
+      name: "france"
+    })
+  } 
 
+  selectedBrazil(){
+    this.setState({
+      name: "brazil"
+    })
+  }
+  
+  selectedCroatia(){
+    this.setState({
+      name: "croatia"
+    })
+  }
 
   render(){
-      <div>
-        <Button onClick="">France</Button>
-        <Button onClick="">Brazil</Button>
-        <Button onClick="">Croatia</Button>
-      </div>
+     
 
     return (
-      <div>
-        <h1 className="text-primary">Countries</h1>
+      <div className="container">
+        <h1>Countries</h1>
+          <div className="row">
+            <div className="col-3">
+              <Button type="button" isSelected={this.state.name === "france"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={this.selectedFrance}>France</Button>
+            </div>
+            <div className="col-3">
+              <Button type="button" isSelected={this.state.name === "brazil"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={this.selectedBrazil}>Brazil</Button>
+            </div>
+            <div className="col-3">
+              <Button type="button" isSelected={this.state.name === "croatia"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={this.selectedCroatia}>Croatia</Button>
+            </div>
+          </div>
         <Cards></Cards>
       </div>
     );
