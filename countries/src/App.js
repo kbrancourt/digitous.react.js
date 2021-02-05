@@ -16,7 +16,6 @@ export class App extends React.Component {
       isSelected: false
     }
 
-    this.componentDidMount =this.componentDidMount.bind(this);
     this.getCountry =this.getCountry.bind(this);
     
   }
@@ -64,26 +63,28 @@ export class App extends React.Component {
 
     return (
       <div className="container">
-        <h1>Countries</h1>
+        <h1 className="text-center">Countries</h1>
           <div className="row">
-            <div className="col-3">
-              <Button type="button" isSelected={this.state.name === "france"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("france")}>France</Button>
+            <div className="col-4">
+              <Button type="button" isSelected={this.state.isSelected===true?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("france")}>France</Button>
             </div>
-            <div className="col-3">
-              <Button type="button" isSelected={this.state.name === "brazil"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("brazil")}>Brazil</Button>
+            <div className="col-4">
+              <Button type="button" isSelected={this.state.isSelected===true?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("brazil")}>Brazil</Button>
             </div>
-            <div className="col-3">
-              <Button type="button" isSelected={this.state.name === "croatia"?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("croatia")}>Croatia</Button>
+            <div className="col-4">
+              <Button type="button" isSelected={this.state.isSelected===true?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("croatia")}>Croatia</Button>
             </div>
             <div >
               <Cards ></Cards>
             </div>
-            <div className="my-5 px-5 mx-auto"  style={{width: '200px'},{heigth: '250px'}}>
-              <img className="img-fluid" src={this.state.flag}/>
-              <div>{this.state.name}</div>
-              <div>{this.state.capital}</div>
-              <div>{this.state.population} habitants</div>
-              <div>{this.state.region}</div>
+            <div className="col-12">
+              <div>        
+                <img className="col-8 offset-2" src={this.state.flag}/>
+              </div>
+              <div className="text-center"><b>Pays: </b>{this.state.name}</div>
+              <div className="text-center"><b>Capital:</b> {this.state.capital}</div>
+              <div className="text-center"><b>Population:</b> {this.state.population} habitants</div>
+              <div className="text-center"><b>Régions: </b>{this.state.region}</div>
             </div>
           </div>
           
