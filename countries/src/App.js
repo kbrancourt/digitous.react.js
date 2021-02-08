@@ -21,19 +21,7 @@ export class App extends React.Component {
   }
 
    componentDidMount(){
-     fetch("https://restcountries.eu/rest/v2/name/france")
-     .then(resultat => resultat.json())
-    //  console.log("resultat", resultat)
-     .then(name => {
-       this.setState({
-            name: name[0].name,
-            capital:name[0].capital,
-            flag: name[0].flag,
-            population: name[0].population,
-            region:name[0].region
-     })
-   })
-   .catch(error => console.error(error))
+    this.getCountrytCountry("france");
   }
 
 
@@ -75,20 +63,16 @@ export class App extends React.Component {
               <Button type="button" isSelected={this.state.isSelected===true?"form-control btn btn-primary" : "form-control btn btn-light"} onClick={() => this.getCountry("croatia")}>Croatia</Button>
             </div>
             <div >
-              <Cards ></Cards>
-            </div>
-            <div className="col-12">
-              <div>        
-                <img className="col-8 offset-2" src={this.state.flag}/>
-              </div>
-              <div className="text-center"><b>Pays: </b>{this.state.name}</div>
-              <div className="text-center"><b>Capital:</b> {this.state.capital}</div>
-              <div className="text-center"><b>Population:</b> {this.state.population} habitants</div>
-              <div className="text-center"><b>Régions: </b>{this.state.region}</div>
-            </div>
+              {/* <Cards {...this.state}/> autre méthode */}
+              <Cards
+                Flag= {this.state.flag}
+                Name={this.state.name}
+                Capital={this.props.capital}
+                Population={this.props.population}
+                Region= {this.props.region}
+              />
+            </div>   
           </div>
-          
-          
           
       </div>
     );

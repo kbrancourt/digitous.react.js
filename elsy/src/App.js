@@ -24,10 +24,11 @@ export class App extends React.Component {
 
     this.onHeartChange= this.onHeartChange.bind(this);
   }
-
-  onHeartChange(){
+  //Créez la méthode onHeartChange qui reçoit un paramètre value
+  //La méthode change le state de `this.state.heart` avec la valeur `value`
+  onHeartChange(value){
     this.setState({
-       heart: "value"
+       heart: value
     });
   }
 
@@ -51,13 +52,19 @@ export class App extends React.Component {
               <Box name={"water"} icon ={ "local_drink"} color={"#3A85FF"} value={"1.5"} unit={"L"}/>,
 
               {/* steps */}
-              <Box name={"steps"} icon ={"directions_walk"} color={"black"} value ={"3000"} unit ={"steps"} min={"stepMin"} max={"steptMax"} onChange={"onHeartChange"}/>,
+              <Box name={"steps"} icon ={"directions_walk"} color={"black"} value ={"3000"} unit ={"steps"} min={stepMin} max={steptMax} onChange={this.onHeartChange}/>,
 
+
+              {/* Envoyez les props suivantes au composant Box correspondant à Heart :
+              //- `min` avec la valeur `heartMin`
+              // `max` avec la valeur `heartMax`
+              -// `onChange` avec la reference de `onHeartChange`
+              - //Modifiez l’attribut `heart` pour passer le state `heart`, à la place de `heartMin` */}
               {/* heart */}
-              <Box name={"heart"} icon={"favorite"} color={"red"} value= {"120"} unit= {"bpm"} min={"heartMin"} max={"heartMax"} onChange={"onHeartChange"}/>,
+              <Box name={"heart"} icon={"favorite"} color={"red"} value= {"120"} unit= {"bpm"} min={heartMin} max={heartMax} onChange={this.onHeartChange}/>,
 
               {/* temperature */}
-              <Box name={"temperature"} icon ={"wb_sunny"} color={"yellow"} value= {"-10"}  unit={ "°C"} min={"temptMin"} max={"tempMax"} onChange={"onHeartChange"}/>,
+              <Box name={"temperature"} icon ={"wb_sunny"} color={"yellow"} value= {"-10"}  unit={ "°C"} min={temptMin} max={tempMax} onChange={this.onHeartChange}/>,
 
           </div>
         

@@ -1,0 +1,67 @@
+1ere partie
+
+1. Quel est la différence entre une props et un state
+ Une props permets d'envoyer des données du composant parent vers un composant enfant.
+ Le state de stocker des données dans le constructor du composant.
+
+2. Est-il possible d'avoir un state pour n'importe qu'elle composant ?
+oui
+
+
+3. Décrivez les étapes pour faire une remontée de donnée entre un composant enfant et son parent
+
+
+
+2ème partie
+
+Rajoutez le code correspondant pour répondre aux instructions marquées en commentaire
+
+```jsx
+import React from 'react';
+
+class Quizz extends React.Component {
+
+    
+    constructor() {
+        super();
+        this.click = this.click.bind(this);
+
+        this.state = {
+            list: []
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            list: [1,2,3,4]
+        })
+    }
+
+    click() {
+        console.log('Je suis clické');
+        this.setState({
+            list: [...this.state.list, number]
+        })
+        // il faut que je rajoute un element number à ma list
+
+    }
+
+    render() {
+        return (
+            <div>
+                {/* afficher dans des balises ul / li tout 
+                les element de la list en utilisant la fonction map}*/}
+                <ul>
+                        {this.state.list.map(curr) => {
+                            retur <li> {curr}  </li>
+                        }}
+                 </ul> 
+                <button onClick={this.click}>Button</button>
+            </div>
+        )
+    }
+
+}
+
+export default Quizz
+```
