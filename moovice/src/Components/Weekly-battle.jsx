@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class WeeklyPaddle extends React.Component{
+class WeeklyBattle extends React.Component{
   render(){
     return (
      <>
@@ -13,4 +13,4 @@ class WeeklyPaddle extends React.Component{
   
 }
 
-export default WeeklyPaddle;
+export default WeeklyBattle;
