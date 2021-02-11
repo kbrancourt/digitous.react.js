@@ -9,20 +9,11 @@ class Popular extends React.Component {
     super();
     this.state = {
       detailsMovie: [],
-      title: "",
-      release_date: "",
-      original_language: "",
-      overview: "",
-      poster_path: "",
-      popularity: "",
     };
   }
 
-  componentDidMount() {
-    this.getMovie("Wonder Woman");
-  }
 
-  getMovie(movie) {
+  componentDidMount() {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9bdc573f40963087e0f47872b51195a9"
     )
@@ -38,28 +29,19 @@ class Popular extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <div>
         <h1>Popular</h1>
 
-        {this.state.detailsMovie.map((movie) => {
+        {this.state.detailsMovie.map((movie,index) => {
           return (
-            <p>
-              <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
-            </p>
-          );
-        })}
+            <p key={index}><Cards film={movie}/></p>
+            
+        )}
+        )}
+      </div>
         
-        <Cards>
-          <div className="container-fluid">
-            <h1>{this.props.title}</h1>
-            <img src="https://image.tmdb.org/t/p/w300/" alt="Affiche du film"/>
-            <p>{this.props.release_date}</p>
-            <p>{this.props.overview}</p>
-          </div>
-        </Cards>
-      </BrowserRouter>
-    );
-  }
+    
+    )}
 }
 
 export default Popular;
