@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom"; // on importe les outils du router
+import Cards from './Cards'
+
+
 
 class Popular extends React.Component {
   constructor() {
@@ -36,13 +39,24 @@ class Popular extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        <h1>Popular</h1>
+
         {this.state.detailsMovie.map((movie) => {
           return (
-            
+            <p>
               <Link to={`/movie/${movie.id}`}>{movie.title}</Link>
+            </p>
           );
         })}
-        <h1>Popular</h1>
+        
+        <Cards>
+          <div className="container-fluid">
+            <h1>{this.props.title}</h1>
+            <img src="https://image.tmdb.org/t/p/w300/" alt="Affiche du film"/>
+            <p>{this.props.release_date}</p>
+            <p>{this.props.overview}</p>
+          </div>
+        </Cards>
       </BrowserRouter>
     );
   }
