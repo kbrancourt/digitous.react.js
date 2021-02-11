@@ -6,7 +6,8 @@ class PopularBattle extends React.Component{
     super();
     this.state = {
       detailsMovie: [],
-      currentBattle:0
+      currentBattle:0,
+      
     };
   }
 
@@ -25,12 +26,12 @@ class PopularBattle extends React.Component{
   }
 
   nextCard(n){
-    console.log("next", n)
+    //console.log("next", n)
     let indice = n+2;
     this.setState({
       currentBattle: indice
     })
-    console.log("current", this.state.currentBattle)
+    //console.log("current", this.state.currentBattle)
   }
   
   render() {
