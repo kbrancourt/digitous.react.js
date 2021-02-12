@@ -36,9 +36,12 @@ class PopularBattle extends React.Component{
     
   }
 
-  {detailsMovie.filter((movie)=>{
-    return movie.id === parseInt(this.props.match.params.id)
-  })}
+//- L'ID du film cliqué doit être sauvegardé dans le local storage (clé `favorites`) si il n'y est pas déjà
+//Lorsqu'on a cliqué sur tous les films de l'array, un message doit d'afficher : "Vous avez parcouru tous les films !"
+
+  // {detailsMovie.filter((movie)=>{
+  //   return movie.id === parseInt(this.props.match.params.id)
+  // })}
   
   // localStorage.setItem("favorites", this.state.detailsMovie.id)
   //   console.log("favorite", this.state.detailsMovie[0].id)

@@ -6,21 +6,30 @@ class Favorites extends React.Component{
       super();
         this.state={
           movies : [],
-          favIDs: {}
+          favIDs: getStorage()
         }
     }
 
-  // componentDidMount(){
-  //   favIDs.map((getMovie) => {
-  //     this.setState({
-  //       movies:""
-  //     })
-  //   }
-  // }
+    //Dans un componentDidMount, parcourez l'array favIDs et pour chaque item, lancez la méthode getMovie puis remplissez le state movies avec le résultat (attention, tous les films doivent être dans movies !)
 
 
+   componentDidMount(){
+     this.state.favIDs.map((getMovie) => {
+       this.setState({
+         movies:""
+       })
+     }
+ }
 
-  getStorage
+ //Créez la méthode getStorage qui va retourner votre array d’ID sauvegardés
+ //localStorage.getItem(key)
+
+
+// getStorage(){
+//     const idList = this.state.movies;
+//       idList.push()
+// }
+  
 
 
   getMovie = (id) => {
@@ -28,8 +37,7 @@ class Favorites extends React.Component{
     .then((response) => response.json())
       .then((response) => {
         console.log("result", response);
-        const idList = this.state.movies;
-        idList.push()
+        
         this.setState({
           movies: response.results,
         });
