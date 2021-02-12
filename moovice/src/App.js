@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom"; // on importe les outils du router
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from "./Components/Homepage";
 import Weekly from "./Components/Weekly";
 import WeeklyBattle from "./Components/Weekly-battle";

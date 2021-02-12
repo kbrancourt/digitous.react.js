@@ -34,7 +34,7 @@ class Popular extends React.Component {
 
         {this.state.detailsMovie.map((movie,index) => {
           return (
-            <p key={index}><Cards film={movie}/></p>
+            <p  key={index}><Cards film={movie}/></p>
             
         )}
         )}

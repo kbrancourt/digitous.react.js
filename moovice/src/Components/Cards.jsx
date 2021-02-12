@@ -16,16 +16,15 @@ class Cards extends React.Component{
                     <div className="col">
                         <h1>{film.title}</h1>
                     </div>
-                    <div className="col">
-                         {film.release_date}
-                    </div>
                 </div>
                 <div className="row">
                     <div className="col">
-                    <img src={url}/>
+                        <img src={url} />
                     </div>
+
                     <div className="col">
-                    {film.overview}
+                        <p><b>Date de sortie: </b>{film.release_date}</p>
+                        <p><b>Synopsis: </b>{film.overview}</p>
                     </div>
                 
                 </div>
